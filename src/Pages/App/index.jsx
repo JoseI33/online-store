@@ -1,11 +1,11 @@
-import { useRoutes, BrowserRouter, Route, Switch } from 'react-router-dom'
+import { useRoutes, BrowserRouter } from 'react-router-dom'
 import Home from '../Home'
 import MyAccount from '../MyAccount'
 import MyOrder from '../MyOrder'
 import MyOrders from '../MyOrders'
 import NotFound from '../NotFound'
-import SignIn from '../Signin'
-import NavBar from '../../Components/NavBar'
+import SignIn from '../Signin/index.jsx'
+import NavBar from '../../Components/NavBar/index.jsx'
 import './App.css'
 
 const AppRoutes = () => {
@@ -22,11 +22,12 @@ const AppRoutes = () => {
 }
 
 const App = () => {
-  return (
+  return ( <>
     <BrowserRouter>
-      <AppRoutes />
-      <NavBar />
+    <AppRoutes />
+    <NavBar />
     </BrowserRouter>
+  </>
   )
 }
 
