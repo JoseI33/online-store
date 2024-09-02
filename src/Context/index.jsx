@@ -1,15 +1,19 @@
 import { createContext, useState } from 'react'
 
-export const ShoppingCardContext = createContext()
+export const ShoppingCartContext = createContext()
 
 export const ShoppingCardProvider = ({children}) => {
     const [count, setCount] = useState(0)
+    console.log('COUNT:', count)
+    
     return (
-        <ShoppingCardContext.Provider value={{
+        <ShoppingCartContext.Provider value={{
             count,
             setCount
         }}>
         {children}
-        </ShoppingCardContext.Provider>
+        </ShoppingCartContext.Provider>
     )
 }
+
+export default ShoppingCartContext
