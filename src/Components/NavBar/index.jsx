@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { ShoppingBagIcon } from "@heroicons/react/24/solid"
 import { NavLink } from "react-router-dom"
 import { ShoppingCartContext } from "../../Context"
 
@@ -101,7 +102,7 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    🛒{context.count}
+                <ShoppingBagIcon className='text-black w-4 h-4'></ShoppingBagIcon>{context.count}
                 </li>
             </ul>
         </nav>
