@@ -11,14 +11,14 @@ const CheckoutSideMenu = () => {
 
     return (
         <aside
-            className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu scrollable-cards flex-col fixed right-0 border border-black rounded-lg bg-white`}>
+            className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col fixed right-0 border border-black rounded-lg`}>
             <div className='flex justify-between items-center p-4'>
                 <h2 className='font-medium text-xl'>My Order</h2>
                 <div>
                     <XMarkIcon className='w-6 h-6 text-black cursor-pointer' onClick={() => context.closeCheckoutSideMenu()}></XMarkIcon>
                 </div>
             </div>
-            <div className='px-2'>
+            <div className='px-2 overflow-y-auto max-h-[300px]'>
            {
             context.cartProducts.map(product => ( 
                 <OrderCard
