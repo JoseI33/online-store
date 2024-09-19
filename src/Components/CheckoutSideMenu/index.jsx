@@ -7,7 +7,6 @@ import './styles.css'
 
 const CheckoutSideMenu = () => {
     const context = useContext(ShoppingCartContext)
-    console.log('CART:', context.cartProducts)
 
     return (
         <aside
@@ -18,7 +17,7 @@ const CheckoutSideMenu = () => {
                     <XMarkIcon className='w-6 h-6 text-black cursor-pointer' onClick={() => context.closeCheckoutSideMenu()}></XMarkIcon>
                 </div>
             </div>
-            <div className='px-2 overflow-y-auto max-h-[300px]'>
+            <div className='px-2 overflow-y-auto'>
            {
             context.cartProducts.map(product => ( 
                 <OrderCard
