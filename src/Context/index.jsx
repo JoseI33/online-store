@@ -4,7 +4,7 @@ export const ShoppingCartContext = createContext()
 
 
 export const ShoppingCardProvider = ({children}) => {
-    
+
     // Shopping Cart + Increment quantily
     const [count, setCount] = useState(0)
 
