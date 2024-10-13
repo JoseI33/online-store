@@ -6,7 +6,7 @@ const OrdersCard = props => {
    
 
     return (
-        <div className="flex justify-between items-center mb-3 border border-black p-4 w-80 rounded-lg">
+        <div className="flex justify-between items-center mb-3 border border-black p-4 w-80 rounded-lg shadow-md bg-orange-600 hover:shadow-2xl">
            <div className="flex justify-between w-full">
             <p className="flex flex-col">
             <span className="font-light">01.10.24</span>
