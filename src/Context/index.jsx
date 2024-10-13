@@ -30,16 +30,27 @@ export const ShoppingCardProvider = ({children}) => {
 
     // Get products 
     const [items, setItems] = useState(null)
+    const [filteredItems, setFilteredItems] = useState(null)
 
     // Get products by title
     const [search, setSearch] = useState(null)
-    console.log('search: ', search)
+    
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products') /*https://api.escuelajs.co/api/v1/products*/
             .then(response => response.json())
             .then(data => setItems(data))
     }, [])
+
+    const filteredItemsByTitle = (items, search) => {
+        return items?.filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
+    }
+
+    useEffect(() => {
+        if (search) setFilteredItems(filteredItemsByTitle(items, search))
+    }, [items, search])
+
+    console.log('filteredItems: ', filteredItems)
 
     return (
         <ShoppingCartContext.Provider value={{
@@ -60,7 +71,8 @@ export const ShoppingCardProvider = ({children}) => {
             items,
             setItems,
             search,
-            setSearch
+            setSearch,
+            filteredItems,
         }}>
         {children}
         </ShoppingCartContext.Provider>
