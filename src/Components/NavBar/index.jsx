@@ -27,6 +27,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to='/mclothing'
+                        onClick={() => context.setSearByCategory('mclothing')}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>
@@ -36,6 +37,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to='/electronics'
+                        onClick={() => context.setSearByCategory('electronics')}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>
@@ -45,6 +47,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to='/jewelery'
+                        onClick={() => context.setSearByCategory('jewelery')}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>
@@ -54,6 +57,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to='/wclothing'
+                        onClick={() => context.setSearByCategory('wclothing')}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>
@@ -63,6 +67,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to='/others'
+                        onClick={() => context.setSearByCategory('others')}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>
