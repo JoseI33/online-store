@@ -18,6 +18,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to='/'
+                        onClick={() => context.setSearchByCategory()}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>
@@ -27,17 +28,19 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to='/mclothing'
-                        onClick={() => context.setSearByCategory('mclothing')}
+                        onClick={() => {
+                        context.setSearchByCategory(`men's clothing`)}
+                        }
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>
-                        Man Clothing
+                        Men's Clothing
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
                         to='/electronics'
-                        onClick={() => context.setSearByCategory('electronics')}
+                        onClick={() => context.setSearchByCategory('electronics')}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>
@@ -47,7 +50,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to='/jewelery'
-                        onClick={() => context.setSearByCategory('jewelery')}
+                        onClick={() => context.setSearchByCategory('jewelery')}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>
@@ -57,7 +60,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to='/wclothing'
-                        onClick={() => context.setSearByCategory('wclothing')}
+                        onClick={() => context.setSearchByCategory(`women's clothing`)}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>
@@ -67,7 +70,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to='/others'
-                        onClick={() => context.setSearByCategory('others')}
+                        onClick={() => context.setSearchByCategory('others')}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }>

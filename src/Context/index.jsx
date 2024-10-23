@@ -8,7 +8,7 @@ export const ShoppingCardProvider = ({ children }) => {
     // Shopping Cart + Increment quantily
     const [count, setCount] = useState(0)
 
-    // Product Detail + Ople/Close
+    // Product Detail + Open/Close
     const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
     const openProductDetail = () => setIsProductDetailOpen(true)
     const closeProductDetail = () => setIsProductDetailOpen(false)
@@ -51,7 +51,8 @@ export const ShoppingCardProvider = ({ children }) => {
 
     const filteredItemsByCategory = (items, searchByCategory) => {
         return items?.filter(item => item.category.toLowerCase().includes(searchByCategory.toLowerCase()))
-    }
+   }
+
 
     const filterBy = (searchType, items, search, searchByCategory) => {
         if (searchType === 'BY_TITLE') {
@@ -69,43 +70,44 @@ export const ShoppingCardProvider = ({ children }) => {
         if (!searchType) {
             return items
         }
-
-        }
-
-        useEffect(() => {
-            if (search && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, search, searchByCategory))
-            if (search && !searchByCategory) setFilteredItems(filterBy('BY_TITLE', items, search, searchByCategory))
-            if (!search && searchByCategory) setFilteredItems(filterBy('BY_CATEGORY', items, search, searchByCategory))
-            if (!searchByCategory && !search) setFilteredItems(filterBy(null, items, search, searchByCategory))
-        }, [items, search, searchByCategory])
-
-        return (
-            <ShoppingCartContext.Provider value={{
-                count,
-                setCount,
-                openProductDetail,
-                closeProductDetail,
-                isProductDetailOpen,
-                productToShow,
-                setProductToShow,
-                cartProducts,
-                setCartProducts,
-                openCheckoutSideMenu,
-                closeCheckoutSideMenu,
-                isCheckoutSideMenuOpen,
-                order,
-                setOrder,
-                items,
-                setItems,
-                search,
-                setSearch,
-                filteredItems,
-                searchByCategory,
-                setSearchByCategory
-            }}>
-                {children}
-            </ShoppingCartContext.Provider>
-        )
     }
 
-    export default ShoppingCartContext
+    console.log('filteredItems: ', filteredItems)
+
+    useEffect(() => {
+        if (search && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, search, searchByCategory))
+        if (search && !searchByCategory) setFilteredItems(filterBy('BY_TITLE', items, search, searchByCategory))
+        if (!search && searchByCategory) setFilteredItems(filterBy('BY_CATEGORY', items, search, searchByCategory))
+        if (!search && !searchByCategory) setFilteredItems(filterBy(null, items, search, searchByCategory))
+    }, [items, search, searchByCategory])
+
+    return (
+        <ShoppingCartContext.Provider value={{
+            count,
+            setCount,
+            openProductDetail,
+            closeProductDetail,
+            isProductDetailOpen,
+            productToShow,
+            setProductToShow,
+            cartProducts,
+            setCartProducts,
+            openCheckoutSideMenu,
+            closeCheckoutSideMenu,
+            isCheckoutSideMenuOpen,
+            order,
+            setOrder,
+            items,
+            setItems,
+            search,
+            setSearch,
+            filteredItems,
+            searchByCategory,
+            setSearchByCategory
+        }}>
+            {children}
+        </ShoppingCartContext.Provider>
+    )
+}
+
+export default ShoppingCartContext
