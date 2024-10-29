@@ -9,7 +9,6 @@ function Home() {
     const context = useContext(ShoppingCartContext)
 
     const renderView = () => {
-        if (context.search?.length > 0) {
             if (context.filteredItems?.length > 0) {
                 return (
                     context.filteredItems?.map(item => ( 
@@ -21,14 +20,7 @@ function Home() {
                     <div className="flex justify-center items-center w-full absolute left-1/2 transform -translate-x-1/2"><img src="https://media.giphy.com/media/7TWecD5OaqpKE/giphy.gif?cid=ecf05e47bjxleitc0wmtz7948pdbig4ncs3triy7at8iv3fr&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="We have nothing" /></div>
                 )
             }
-        } else {
-            return (
-                context.items?.map(item => {
-                    return <Card key={item.id} data={item} />
-                }))
-        }
-    }
-
+        } 
 
     return (
         <Layout>

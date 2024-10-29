@@ -72,8 +72,6 @@ export const ShoppingCardProvider = ({ children }) => {
         }
     }
 
-    console.log('filteredItems: ', filteredItems)
-
     useEffect(() => {
         if (search && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, search, searchByCategory))
         if (search && !searchByCategory) setFilteredItems(filterBy('BY_TITLE', items, search, searchByCategory))
