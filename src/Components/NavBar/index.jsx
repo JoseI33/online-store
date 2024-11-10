@@ -1,20 +1,29 @@
-import { useContext } from "react"
-import { ShoppingBagIcon } from "@heroicons/react/24/solid"
+import { useContext, useState } from "react"
+import { Bars4Icon, ShoppingBagIcon } from "@heroicons/react/24/solid"
 import { NavLink } from "react-router-dom"
 import { ShoppingCartContext } from "../../Context"
 
 const Navbar = () => {
     const context = useContext(ShoppingCartContext)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const activeStyle = 'underline underline-offset-4'
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen)
+    }
 
     return (
         <nav className="flex justify-between items-center  top-0 fixed z-10 w-full py-5 px-8 text-sm font-light">
-            <ul className="flex items-center gap-3">
-                <li className="font-semibold text-lg">
-                    <NavLink to='/'>
-                        Shopi
-                    </NavLink>
-                </li>
+            <div className="flex items-center justify-between w-full">
+                <div className="font-semibold text-lg">
+                    <NavLink to='/'>Shopi</NavLink>
+                </div>
+                <button onClick={toggleMenu} className="md:hidden">
+                        <Bars4Icon className="h-6 w-6"/> 
+                </button>
+                </div>
+                <div className="hidden md:flex flex-col md:flex-row md:gap-4">
+                    <ul className={`flex-col md:flex-row md:flex md:items-center md:gap-11 ${isMenuOpen? 'flex' : 'hidden'} md:flex`}>
                 <li>
                     <NavLink
                         to='/'
@@ -77,8 +86,6 @@ const Navbar = () => {
                         Others
                     </NavLink>
                 </li>
-            </ul>
-            <ul className="flex items-center gap-3">
                 <li className="text-black/60">
                     jose.imhoff.20@gmail.com
                 </li>
@@ -116,6 +123,7 @@ const Navbar = () => {
                 </div>
                 </li>
             </ul>
+            </div>
         </nav>
     )
 }
