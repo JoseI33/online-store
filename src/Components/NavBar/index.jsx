@@ -9,22 +9,21 @@ const Navbar = () => {
     const activeStyle = 'underline underline-offset-4'
 
     const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen)
+        setIsMenuOpen(prevState => !prevState) //Alterna el estado.
     }
 
     return (
-        <nav className="flex justify-between items-center  top-0 fixed z-10 w-full py-5 px-8 text-sm font-light">
+        <nav className="flex flex-col md:flex-row justify-between items-center top-0 fixed z-10 w-full py-5 px-8 text-sm font-light bg-white">
             <div className="flex items-center justify-between w-full">
                 <div className="font-semibold text-lg">
                     <NavLink to='/'>Shopi</NavLink>
                 </div>
                 <button onClick={toggleMenu} className="md:hidden">
-                        <Bars4Icon className="h-6 w-6"/> 
+                    <Bars4Icon className="h-6 w-6" />
                 </button>
-                </div>
-                <div className="hidden md:flex flex-col md:flex-row md:gap-4">
-                    <ul className={`flex-col md:flex-row md:flex md:items-center md:gap-11 ${isMenuOpen? 'flex' : 'hidden'} md:flex`}>
-                <li>
+            </div>
+            <ul className={`flex-col md:flex-row md:flex gap-x-8 md:items-center ml-auto ${isMenuOpen ? 'flex' : 'hidden'} md:flex`}>
+                <li className="whitespace-nowrap">
                     <NavLink
                         to='/'
                         onClick={() => context.setSearchByCategory()}
@@ -34,7 +33,7 @@ const Navbar = () => {
                         All
                     </NavLink>
                 </li>
-                <li>
+                <li className="whitespace-nowrap">
                     <NavLink
                         to='/mclothing'
                         onClick={() => {
@@ -46,7 +45,7 @@ const Navbar = () => {
                         Men's Clothing
                     </NavLink>
                 </li>
-                <li>
+                <li className="whitespace-nowrap">
                     <NavLink
                         to='/electronics'
                         onClick={() => context.setSearchByCategory('electronics')}
@@ -56,7 +55,7 @@ const Navbar = () => {
                         Electronics
                     </NavLink>
                 </li>
-                <li>
+                <li className="whitespace-nowrap">
                     <NavLink
                         to='/jewelery'
                         onClick={() => context.setSearchByCategory('jewelery')}
@@ -66,7 +65,7 @@ const Navbar = () => {
                         Jewelery
                     </NavLink>
                 </li>
-                <li>
+                <li className="whitespace-nowrap">
                     <NavLink
                         to='/wclothing'
                         onClick={() => context.setSearchByCategory(`women's clothing`)}
@@ -89,7 +88,7 @@ const Navbar = () => {
                 <li className="text-black/60">
                     jose.imhoff.20@gmail.com
                 </li>
-                <li>
+                <li className="whitespace-nowrap">
                     <NavLink
                         to='/my-orders'
                         className={({ isActive }) =>
@@ -98,7 +97,7 @@ const Navbar = () => {
                         My Orders
                     </NavLink>
                 </li>
-                <li>
+                <li className="whitespace-nowrap">
                     <NavLink
                         to='/my-account'
                         className={({ isActive }) =>
@@ -107,7 +106,7 @@ const Navbar = () => {
                         My Account
                     </NavLink>
                 </li>
-                <li>
+                <li className="whitespace-nowrap">
                     <NavLink 
                         to='/sign-in'
                         className={({ isActive }) =>
@@ -123,7 +122,6 @@ const Navbar = () => {
                 </div>
                 </li>
             </ul>
-            </div>
         </nav>
     )
 }
